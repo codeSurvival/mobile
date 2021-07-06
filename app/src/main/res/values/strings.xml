@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Code Survival</string>
+    <string name="sign_up_link">Pas de compte ? Clicker ici</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="connection">Connection</string>
+    <string name="connection_error_to_short">username or password to short</string>
+    <string name="need_input">connection need to input username and password</string>
+    <string name="user_do_no_exist">This user do not exist</string>
+</resources>
