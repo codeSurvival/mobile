@@ -31,15 +31,13 @@
 
     <TextView
         android:id="@+id/error_message"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/red2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connectionTV"
         app:layout_constraintBottom_toTopOf="@+id/emailET"
-        android:text="@string/app_name"
-        android:textSize="20sp"
         />
 
     <TextView

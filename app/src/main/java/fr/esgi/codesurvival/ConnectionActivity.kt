@@ -81,6 +81,10 @@ class ConnectionActivity : AppCompatActivity(){
     private suspend fun toTheNextActivity() : Unit {
         withContext(Default){
             val intent = Intent(applicationContext, ConnectedPage::class.java)
+            intent.putExtra("userToken", user?.token)
+            intent.putExtra("username", user?.username)
+            intent.putExtra("userEmail", user?.email)
+            intent.putExtra("userRole", user?.role)
             startActivity(intent)
             Log.d(TAG, "toTheNextActivity: Called")
         }
