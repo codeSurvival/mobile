@@ -17,11 +17,13 @@
         android:textColor="@color/teal_700"
         android:text="VOUS ETES CONNECTE"
         android:textSize="30sp"
+        android:id="@+id/message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
+        app:layout_constraintTop_toBottomOf="@+id/message"
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,5 +48,21 @@
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/email">
     </TextView>
+
+    <GridView
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/gridView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/message"
+        android:gravity="center"
+        android:padding="3dp"
+        android:numColumns="4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+    </GridView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
