@@ -1,7 +1,10 @@
 package fr.esgi.codesurvival.users
 
+import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.GET
+import retrofit2.http.Body
+
+import retrofit2.http.POST
 
 interface UserApiService {
     companion object{
@@ -11,7 +14,7 @@ interface UserApiService {
         private const val URI = "api/json/get/cffbFoeNyW?indent=2"
     }
 
-    @GET(URI)
-    fun getUserInfo() : Call<User>
+    @POST(URI)
+    fun getUserInfo(@Body test : JSONObject) : Call<User>
 
 }

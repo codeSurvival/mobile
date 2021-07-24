@@ -21,7 +21,7 @@ class ImgAdapter(
     //, nbCol;
     private val cellWidth: Int
     private val cellHeight: Int
-    private val boardElements: ArrayList<BoardElement>
+    private val boardElements: MutableList<BoardElement>
 
     override fun getCount(): Int {
         return boardElements.size

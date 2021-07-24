@@ -7,13 +7,12 @@ import retrofit2.Response
 
 
 class ServerLoginTask(
-    private var user: User?,
-    private val callback: () -> Unit
+    var user: User?,
+    val callback: () -> Unit
 ) : Callback<User> {
     companion object {
         private const val TAG: String = "UserConnection"
     }
-    var correctAnswer : Boolean = false
 
         override fun onFailure(call: Call<User>, t: Throwable) {
             Log.e(TAG, "An error has occurred", t)
@@ -25,6 +24,7 @@ class ServerLoginTask(
             }
             Log.d(TAG, "onResponse: user : $user")
             this.callback()
+
         }
 }
 /*

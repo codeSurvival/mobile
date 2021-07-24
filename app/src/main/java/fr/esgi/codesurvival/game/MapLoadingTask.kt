@@ -1,29 +1,36 @@
 package fr.esgi.codesurvival.game
 
 import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import fr.esgi.codesurvival.users.User
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MapLoadingTask (
-    private var user: User?,
+    private var boardElements: MutableList<BoardElement>,
+    private var mobState : MobState,
     private val callback: () -> Unit
-) : Callback<User> {
+) : Callback<Any> {
     companion object {
-        private const val TAG: String = "UserConnection"
+        private const val TAG: String = "MapLoadingTask"
     }
-    var correctAnswer : Boolean = false
 
-    override fun onFailure(call: Call<User>, t: Throwable) {
+    override fun onFailure(call: Call<Any>, t: Throwable) {
         Log.e(TAG, "An error has occurred", t)
     }
 
-    override fun onResponse(call: Call<User>, response: Response<User>) {
-        response.body()?.let {
-                user: User -> this.user = user
-        }
-        Log.d(TAG, "onResponse: user : $user")
+    override fun onResponse(call: Call<Any>, response: Response<Any>) {
+        //response.body()?.forEach { boardElement: BoardElement -> this.boardElements.add(boardElement) }
+        //Log.d(TAG, "onResponse: user : $boardElements")
+        //this.callback()
+        var world = response.body() as JSONObject
+        var boardElementsString = world.getJSONObject("world").getJSONObject("grid").getJSONArray("tiles").toString()
+        var mobStateString = world.getJSONObject("world").getJSONObject("mobDTO").getJSONObject("mobState").toString()
+        mobState = Gson().fromJson(mobStateString, MobState::class.java)
+        boardElements = Gson().fromJson(boardElementsString, MutableList::class.java) as MutableList<BoardElement>
         this.callback()
     }
 }

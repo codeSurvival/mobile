@@ -1,5 +1,6 @@
 package fr.esgi.codesurvival.users
 
+import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -13,5 +14,10 @@ object UserRepository {
             .build()
             .create(UserApiService::class.java)
     }
-    fun getUser(callback : ServerLoginTask) = this.apiService?.getUserInfo()?.enqueue(callback)
+    fun getUser(callback : ServerLoginTask, username: String, password : String) {
+        var user = JSONObject()
+        user.put("username", username)
+        user.put("password", password)
+        this.apiService?.getUserInfo(user)?.enqueue(callback)
+    }
 }
